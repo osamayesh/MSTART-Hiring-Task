@@ -1,0 +1,45 @@
+﻿@model  MSTART_Hiring_Task.Models.Account
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h1>Modify Account</h1>
+
+<form asp-action="SaveAccount" method="post">
+    <div>
+        <label for="UserID">User ID:</label>
+        <input type="text" id="UserID" name="UserID" value="@Model.UserId" required />
+    </div>
+    <div>
+        <label for="AccountNumber">Account Number:</label>
+        <input type="text" id="AccountNumber" name="AccountNumber" value="@Model.AccountNumber" required />
+    </div>
+    <div>
+        <label for="Balance">Balance:</label>
+        <input type="number" id="Balance" name="Balance" value="@Model.Balance" required />
+    </div>
+    <div>
+        <label for="Currency">Currency:</label>
+        <select id="Currency" name="Currency" required>
+            <option value="USD">USD</option>
+            <option value="EUR">EUR</option>
+            <option value="GBP">GBP</option>
+            <!-- Add more currency options as needed -->
+        </select>
+    </div>
+    <div>
+        <label for="Status">Status:</label>
+        <select id="Status" name="Status" required>
+            <option value="Active">Active</option>
+            <option value="Inactive">Inactive</option>
+            <option value="Deleted">Deleted</option>
+            <!-- Add more status options as needed -->
+        </select>
+    </div>
+    <div>
+        <input type="submit" value="Save" name="save" />
+        <input type="submit" value="Save & Continue" name="saveAndContinue" />
+        <a href="/Accounts/ViewAccounts">Return to Account View</a>
+    </div>
+</form>
+

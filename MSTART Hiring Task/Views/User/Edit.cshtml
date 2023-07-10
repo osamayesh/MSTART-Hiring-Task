@@ -1,0 +1,55 @@
+﻿@using static MSTART_Hiring_Task.Models.User;
+@model MSTART_Hiring_Task.Models.User
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h1>Edit Users</h1>
+<form method="post" action="/Users/SaveUser">
+    <div>
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="Username" value="@Model.Username" required />
+    </div>
+    <div>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="Email" value="@Model.Email" required />
+    </div>
+    <div>
+        <label for="firstName">First Name:</label>
+        <input type="text" id="firstName" name="First_Name" value="@Model.FirstName" required />
+    </div>
+    <div>
+        <label for="lastName">Last Name:</label>
+        <input type="text" id="lastName" name="Last_Name" value="@Model.LastName" required />
+    </div>
+    <div>
+        <label for="dateOfBirth">Date of Birth:</label>
+        <input type="date" id="dateOfBirth" name="Date_Of_Birth" value="@Model.DateOfBirth.ToString("yyyy-MM-dd")" required />
+    </div>
+    <div>
+        <label for="status">Status:</label>
+        <select id="status" name="Status" required>
+            <option value="">Select Status</option>
+            @foreach (var status in Enum.GetValues(typeof(UserStatus)))
+            {
+                <option value="@status">@status</option>
+            }
+        </select>
+    </div>
+    <div>
+        <label for="gender">Gender:</label>
+        <select id="gender" name="Gender" required>
+            <option value="">Select Gender</option>
+            @foreach (var gender in Enum.GetValues(typeof(Gender)))
+            {
+                <option value="@gender">@gender</option>
+            }
+        </select>
+    </div>
+    <div>
+        <button type="submit">Save</button>
+        <button type="submit" name="continueEditing" value="true">Save & Continue Editing</button>
+        <a href="/Users">Cancel</a>
+    </div>
+</form>

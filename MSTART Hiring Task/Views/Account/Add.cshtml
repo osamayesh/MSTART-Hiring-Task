@@ -1,0 +1,48 @@
+﻿@model  MSTART_Hiring_Task.Models.Account
+@{
+    ViewData["Title"] = "Add";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>Add Account</h2>
+
+@if (ViewBag.Message != null)
+{
+    <div class="alert alert-success" role="alert">
+        @ViewBag.Message
+    </div>
+}
+
+<form asp-action="Add" method="post">
+    <div class="form-group">
+        <label asp-for="AccountId">AccountId</label>
+        <input asp-for="AccountId" class="form-control" />
+        <span asp-validation-for="AccountId" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="UserId">User ID:</label>
+        <input asp-for="UserId" class="form-control" />
+        <span asp-validation-for="UserId" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="AccountNumber">Account Number:</label>
+        <input asp-for="AccountNumber" class="form-control" />
+        <span asp-validation-for="AccountNumber" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Balance">Balance:</label>
+        <input asp-for="Balance" class="form-control" />
+        <span asp-validation-for="Balance" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="currency">Currency:</label>
+        <input asp-for="currency" class="form-control" />
+        <span asp-validation-for="currency" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Status">Status:</label>
+        <input asp-for="Status" class="form-control" />
+        <span asp-validation-for="Status" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Save</button>
+</form>

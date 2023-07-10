@@ -1,0 +1,44 @@
+﻿@model List<User>
+
+<h2>Users</h2>
+
+<!-- Search form -->
+<form asp-action="Index" method="get">
+    <div class="form-group">
+        <input type="text" name="searchString" class="form-control" placeholder="Search by Username, Email, or User ID">
+    </div>
+    <button type="submit" class="btn btn-primary">Search</button>
+</form>
+
+<!-- Users gridview -->
+<table class="table">
+    <thead>
+        <tr>
+            <th>User ID</th>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Status</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model)
+        {
+            <tr>
+                <td>@user.Id</td>
+                <td>@user.Username</td>
+                <td>@user.Email</td>
+                <td>@user.Status</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@user.Id">Edit</a> |
+                    <input type="checkbox" name="userIds" value="@user.Id" />
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<!-- Delete selected users -->
+<form asp-action="Delete" method="post" onsubmit="return confirm('Are you sure you want to delete the selected users?');">
+    <button type="submit" class="btn btn-danger">Delete Selected Users</button>
+</form>
